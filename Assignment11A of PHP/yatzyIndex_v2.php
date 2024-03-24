@@ -9,6 +9,8 @@
 <p>Welcome, yatzy player, do you have what it takes to crack the high scores list?If so, just <a href="addscore.php">add your own score.</a><p>
 <hr />
 <?php
+
+
 require_once('connectvars.php');
 define('UPLOADPATH', 'images/');
 define('DISPLAYPATH', 'images/');
@@ -22,13 +24,14 @@ while($row = mysqli_fetch_array($data)) {
 	echo '<tr><td class="scoreinfo">';
 	echo '<span class="score">'.$row['score'].'</span><br />';
 	echo '<strong>Name:</strong>'.$row['name'].'<br />';
-	echo '<strong>Date:</strong>'.$row['data'].'</td>';
+	echo '<strong>Date:</strong>'.$row['date'].'</td>';
 	
-	if (is_file(UPLOADPATH.$row['screenshot']) && filesize(UPLOADPATH. $row['screenshot'] > 0) {
-		echo '<td><img src = "'. "images/unverified.jpg" . $screenshot . '" alt = "Score image" /></td></tr>';
+	if (is_file(UPLOADPATH . $row['screenshot']) && filesize(UPLOADPATH . $row['screenshot']) > 0) {
+		echo '<td><img src = "' . DISPLAYPATH . $row['screenshot'] . '" alt = "Score image" /></td></tr>';
+	}
 
 	else {
-		echo '<td><img src = "'. "images/unverified.jpg" . 'unverified.jpg' . '" alt = "Unverified score" /></td></tr>';
+		echo '<td><img src = "'. DISPLAYPATH . 'unverified.jpg' . '" alt = "Unverified score" /></td><tr>';
 	}
 }
 echo '</table>';
